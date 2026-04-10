@@ -1,156 +1,1204 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-    >
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <title>Recipes Keeper App for iOS</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
 
-    <style>
-      .hero {
-        text-align: center;
-        padding: 4rem 1rem 2rem;
+  <!-- 🔥 Primary SEO -->
+  <title>Best Recipe Organizer App for iPhone & iPad | Recipes</title>
+  <meta name="description" content="Recipes is the best free recipe organizer for iPhone and iPad. Save recipes from any website, create smart grocery lists, sync via iCloud, and cook from a beautiful digital cookbook. Download free on the App Store.">
+  <meta name="keywords" content="recipe app, recipe organizer, cookbook app, meal planner app, ios recipe app, cooking app iphone, grocery list app, recipe keeper, save recipes iphone, import recipes from web, digital cookbook, recipe manager ipad, best recipe app 2026">
+  <link rel="canonical" href="https://arecipeapp.com/">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Recipes — Best Recipe Organizer for iPhone & iPad">
+  <meta property="og:description" content="Save recipes from any website, build smart grocery lists, and cook from a beautiful digital cookbook. Free on the App Store.">
+  <meta property="og:url" content="https://arecipeapp.com/">
+  <meta property="og:image" content="https://arecipeapp.com/assets/icon.png">
+  <meta property="og:site_name" content="Recipes">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Recipes — Best Recipe Organizer for iPhone">
+  <meta name="twitter:description" content="The easiest way to save, organize, and cook from recipes on iPhone and iPad. Free on the App Store.">
+  <meta name="twitter:image" content="https://arecipeapp.com/assets/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #fdf8f2;
+      --cream-dark: #f5ede0;
+      --brown: #3d2314;
+      --brown-mid: #7a4528;
+      --orange: #e8622a;
+      --orange-light: #f2874f;
+      --green: #3a6b47;
+      --green-light: #e8f2ec;
+      --text: #2a1a0e;
+      --text-muted: #7a6555;
+      --border: #e5d5c5;
+      --white: #ffffff;
+      --shadow: 0 4px 24px rgba(61,35,20,0.10);
+      --shadow-lg: 0 12px 48px rgba(61,35,20,0.15);
+      --radius: 16px;
+      --radius-lg: 24px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.2;
+      color: var(--brown);
+    }
+
+    a { color: var(--orange); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253,248,242,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+
+    .nav-logo span {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--brown);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: var(--orange); text-decoration: none; }
+
+    .btn-nav {
+      background: var(--orange);
+      color: white !important;
+      padding: 9px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-nav:hover { background: var(--brown-mid) !important; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, #f5e4d0 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      gap: 6px;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 1px solid #b8d9c2;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-icon {
+      width: 110px;
+      height: 110px;
+      border-radius: 26px;
+      box-shadow: var(--shadow-lg);
+      margin: 0 auto 28px;
+      display: block;
+      animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--brown);
+      max-width: 780px;
+      margin: 0 auto 20px;
+      animation: fadeUp 0.6s 0.15s both;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 36px;
+      animation: fadeUp 0.6s 0.25s both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      animation: fadeUp 0.6s 0.35s both;
+    }
+
+    .hero-cta img { height: 52px; width: auto; transition: transform 0.2s; }
+    .hero-cta img:hover { transform: scale(1.04); }
+
+    .hero-note {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    /* ── LOGOS / TRUST ── */
+    .trust-bar {
+      background: var(--cream-dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+      text-align: center;
+    }
+
+    .trust-bar p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .trust-items {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 14px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .trust-item span.icon { font-size: 1.2rem; }
+
+    /* ── SECTIONS ── */
+    section { padding: 72px 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      color: var(--brown);
+      margin-bottom: 16px;
+    }
+
+    .section-body {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      line-height: 1.75;
+    }
+
+    /* ── FEATURES GRID ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .step-num {
+      width: 44px;
+      height: 44px;
+      background: var(--orange);
+      color: white;
+      border-radius: 50%;
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step h3 { font-size: 1.05rem; }
+    .step p { font-size: 0.95rem; color: var(--text-muted); }
+
+    /* ── SCREENSHOTS ── */
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .screenshots-grid img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .screenshots-grid img:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ── COMPARISON TABLE ── */
+    .comparison-wrap {
+      margin-top: 48px;
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      font-size: 0.97rem;
+    }
+
+    thead tr { background: var(--brown); color: white; }
+    thead th {
+      padding: 16px 20px;
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      text-align: left;
+    }
+    thead th:not(:first-child) { text-align: center; }
+
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:nth-child(even) { background: var(--cream); }
+
+    tbody td {
+      padding: 14px 20px;
+      color: var(--text-muted);
+    }
+    tbody td:not(:first-child) { text-align: center; }
+
+    .check { color: var(--green); font-size: 1.1rem; }
+    .cross { color: #c0392b; font-size: 1.1rem; }
+    .highlight-col { background: #fff7f3 !important; font-weight: 600; color: var(--orange) !important; }
+
+    /* ── QUOTES ── */
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .quote-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      position: relative;
+    }
+
+    .quote-card::before {
+      content: '"';
+      font-family: 'Lora', serif;
+      font-size: 4rem;
+      color: var(--orange);
+      opacity: 0.2;
+      position: absolute;
+      top: 8px;
+      left: 20px;
+      line-height: 1;
+    }
+
+    .quote-card blockquote {
+      font-style: italic;
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 16px;
+      padding-top: 16px;
+    }
+
+    .quote-author {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .stars { color: #f5a623; font-size: 0.9rem; margin-bottom: 8px; }
+
+    /* ── FAQ ── */
+    .faq-list {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    details {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    details[open] { box-shadow: var(--shadow); }
+
+    summary {
+      cursor: pointer;
+      padding: 20px 24px;
+      font-family: 'Lora', serif;
+      font-weight: 600;
+      font-size: 1.02rem;
+      color: var(--brown);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--orange);
+      font-family: sans-serif;
+      font-weight: 300;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    details[open] summary::after { transform: rotate(45deg); }
+
+    .faq-answer {
+      padding: 0 24px 20px;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.75;
+      border-top: 1px solid var(--border);
+      margin-top: -1px;
+    }
+
+    /* ── BLOG PREVIEWS ── */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .blog-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+    }
+
+    .blog-topic {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .blog-card h3 {
+      font-size: 1.05rem;
+      color: var(--brown);
+      line-height: 1.35;
+    }
+
+    .blog-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      flex: 1;
+    }
+
+    .blog-read {
+      font-size: 0.85rem;
+      color: var(--orange);
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    /* ── FINAL CTA ── */
+    .cta-section {
+      background: var(--brown);
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 64px 40px;
+      text-align: center;
+      margin: 72px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 120%, var(--brown-mid), transparent);
+    }
+
+    .cta-section * { position: relative; }
+
+    .cta-section h2 {
+      color: var(--cream);
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      color: rgba(253,248,242,0.75);
+      max-width: 500px;
+      margin: 0 auto 32px;
+      font-size: 1.05rem;
+    }
+
+    .cta-section img { height: 54px; transition: transform 0.2s; }
+    .cta-section img:hover { transform: scale(1.04); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .footer-nav a {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ── TAGS ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 5px 13px;
+      border-radius: 999px;
+    }
+
+    /* ── LONG-FORM SEO ── */
+    .seo-content {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      margin-top: 48px;
+    }
+
+    .seo-content h3 {
+      font-size: 1.25rem;
+      margin: 28px 0 10px;
+      color: var(--brown);
+    }
+
+    .seo-content h3:first-child { margin-top: 0; }
+
+    .seo-content p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 0.97rem;
+      line-height: 1.78;
+    }
+
+    .seo-content ul {
+      margin: 0 0 16px 20px;
+      color: var(--text-muted);
+      font-size: 0.97rem;
+    }
+
+    .seo-content li { margin-bottom: 6px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .nav-links { gap: 14px; }
+      .hero { padding: 56px 16px 48px; }
+      .cta-section { padding: 48px 24px; }
+      .seo-content { padding: 28px; }
+    }
+  </style>
+
+  <!-- 📊 Structured Data — WebSite -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Recipes",
+      "url": "https://arecipeapp.com",
+      "description": "The best free recipe organizer app for iPhone and iPad. Save recipes, build grocery lists, and sync your cookbook across Apple devices with iCloud.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://arecipeapp.com/blog/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
+    }
+  </script>
 
-      .app-icon {
-        width: 120px;
-        height: 120px;
-        /*border-radius: 24px;*/
-        margin-bottom: 1rem;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  <!-- 📊 Structured Data — MobileApplication -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "Recipes: Recipe Keeper",
+      "alternateName": "Recipes",
+      "operatingSystem": "iOS 16+, iPadOS 16+",
+      "applicationCategory": "FoodAndDrinkApplication",
+      "url": "https://arecipeapp.com",
+      "downloadUrl": "https://apps.apple.com/bf/app/recipes-recipe-keeper/id1510068935",
+      "description": "A free recipe organizer for iPhone and iPad. Save recipes from the web, organize them into custom folders, build smart grocery lists, and sync everything via iCloud.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Save and organize recipes in custom folders",
+        "Import recipes from thousands of websites",
+        "Smart grocery list builder",
+        "iCloud sync across all Apple devices",
+        "Light and Dark Mode support",
+        "No account or login required",
+        "Privacy-first: no data collected"
+      ],
+      "screenshot": [
+        "https://arecipeapp.com/assets/a.png",
+        "https://arecipeapp.com/assets/b.png",
+        "https://arecipeapp.com/assets/c.png",
+        "https://arecipeapp.com/assets/d.png"
+      ],
+      "softwareVersion": "2.1.2",
+      "datePublished": "2020-09-27",
+      "dateModified": "2025-12-11",
+      "author": {
+        "@type": "Person",
+        "name": "Ethan Hannah"
       }
+    }
+  </script>
 
-      .subtitle {
-        opacity: 0.75;
-        font-size: 1.1rem;
-      }
+  <!-- 📊 Structured Data — FAQPage -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Recipes free to download?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Recipes is free to download on the App Store for iPhone and iPad. Optional in-app purchases are available for a monthly ($0.99) or yearly ($9.99) subscription for premium features."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I import recipes from any website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Recipes's built-in recipe importer works with thousands of popular cooking websites including AllRecipes, Food Network, NYT Cooking, Serious Eats, and many more. Just paste the URL and the app extracts the recipe automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the app sync across my iPhone and iPad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Recipes uses iCloud to sync your entire recipe collection seamlessly across all your Apple devices — iPhone, iPad, and Mac — so your cookbook is always up to date everywhere."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Recipes collect my personal data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The developer collects zero data from users. Your recipes are stored privately in your own iCloud account and are never shared with third parties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I build a grocery list from my saved recipes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Recipes lets you add ingredients directly from any saved recipe to a smart grocery list. Items are automatically organized by category so you can shop faster and more efficiently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What iPhones and iPads is Recipes compatible with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Recipes requires iOS 16 or later for iPhone and iPadOS 16 or later for iPad. It is also compatible with Mac via Apple Silicon (M1 chip or later)."
+          }
+        }
+      ]
+    }
+  </script>
 
-      .cta {
-        margin-top: 1.5rem;
-      }
+  <!-- Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NG43315T8Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NG43315T8Y');
+  </script>
+</head>
 
-      .badge {
-        display: inline-block;
-        padding: 0.25rem 0.6rem;
-        border-radius: 999px;
-        font-size: 0.8rem;
-        background: var(--pico-primary);
-        color: white;
-        margin: 0.2rem;
-      }
+<body>
 
-      footer {
-        text-align: center;
-        margin-top: 4rem;
-        opacity: 0.7;
-        font-size: 0.9rem;
-      }
-    </style>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NG43315T8Y"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-NG43315T8Y');
-    </script>
-  </head>
-
-
-  <body>
-    <main class="container">
-
-      <!-- HERO -->
-      <section class="hero">
-        <img class="app-icon" src="/assets/icon.png" alt="App Icon">
-
-        <h1>
-          Recipes for iOS
-        </h1>
-
-        <p class="subtitle">
-          Your free personal cookbook — save, organize, and cook your favorite recipes in one place.
-        </p>
-
-        <div class="cta">
-          <a href="https://apps.apple.com/bf/app/recipes-recipe-keeper/id1510068935" target="_blank">
-            <img width="200" src="/assets/download.svg" alt="Download">
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Recipes — Home">
+        <img src="/assets/icon.png" alt="Recipes icon" width="36" height="36">
+        <span>Recipes for iOS</span>
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a class="btn-nav" href="https://apps.apple.com/bf/app/recipes-recipe-keeper/id1510068935" target="_blank" rel="noopener">
+            Download Free
           </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ── HERO ── -->
+  <section class="hero" aria-label="Hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span>✨</span> Free on the App Store · No account needed
+      </div>
+
+      <img class="hero-icon" src="/assets/icon.png" alt="Recipes — Recipe Organizer for iPhone and iPad">
+
+      <h1>All-In-One<br>Recipe Organizer App</h1>
+
+      <p class="hero-sub">
+        Save recipes from any website, organize your digital cookbook into folders, build smart grocery lists, and sync everything across your Apple devices — all in one beautifully simple app.
+      </p>
+
+      <div class="hero-cta">
+        <a href="https://apps.apple.com/bf/app/recipes-recipe-keeper/id1510068935" target="_blank" rel="noopener" aria-label="Download Recipes free on the App Store">
+          <img src="/assets/download.svg" alt="Download on the App Store" height="52">
+        </a>
+        <p class="hero-note">Free to download · iPhone, iPad & Mac · iCloud sync included</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUST BAR ── -->
+  <div class="trust-bar" aria-label="App highlights">
+    <div class="container">
+      <p>Why thousands of home cooks choose Recipes</p>
+      <div class="trust-items">
+        <div class="trust-item"><span class="icon">🔒</span> Zero data collected</div>
+        <div class="trust-item"><span class="icon">☁️</span> iCloud sync</div>
+        <div class="trust-item"><span class="icon">🌐</span> Import from 1,000s of sites</div>
+        <div class="trust-item"><span class="icon">🌙</span> Dark Mode support</div>
+        <div class="trust-item"><span class="icon">📱</span> iPhone, iPad & Mac</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ── FEATURES ── -->
+    <section aria-labelledby="features-title">
+      <p class="section-label">Features</p>
+      <h2 class="section-title" id="features-title">Everything You Need to Cook Smarter</h2>
+      <p class="section-body">Recipes is a complete recipe management system for iPhone and iPad. It replaces your scattered bookmarks, screenshots, and sticky notes with one clean, organized home for every dish you love.</p>
+
+      <div class="features-grid">
+        <article class="feature-card">
+          <span class="feature-icon">📚</span>
+          <h3>Recipe Organizer</h3>
+          <p>Save all your recipes in one place and organize them into custom folders — by cuisine, occasion, cooking time, or whatever works for you. Your complete digital cookbook, always with you.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">🌐</span>
+          <h3>Web Recipe Importer</h3>
+          <p>Instantly import recipes from thousands of websites with a single tap. No copying, no reformatting — the app extracts the title, ingredients, and steps automatically and saves them in a clean, ad-free format.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">🛒</span>
+          <h3>Smart Grocery Lists</h3>
+          <p>Turn any saved recipe into a shopping list in seconds. Add ingredients from multiple recipes at once, and the app organizes them by category so you can move through the store without backtracking.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">☁️</span>
+          <h3>iCloud Sync</h3>
+          <p>Your recipe collection syncs seamlessly across every Apple device you own — iPhone, iPad, and Mac. Add a recipe on your phone and cook from it on your iPad in the kitchen without any manual steps.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">🌙</span>
+          <h3>Light & Dark Mode</h3>
+          <p>Recipes adapts to your system preferences with full Light and Dark Mode support. The clean, distraction-free design looks beautiful at any time of day and on any screen.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">🔒</span>
+          <h3>Completely Private</h3>
+          <p>No account required. No personal data collected. Your recipes are stored privately in your own iCloud account and never shared with anyone. Cook with complete peace of mind.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ── -->
+    <section aria-labelledby="how-it-works-title">
+      <p class="section-label">How It Works</p>
+      <h2 class="section-title" id="how-it-works-title">Get Organized in Minutes</h2>
+      <p class="section-body">Getting your recipe collection under control has never been simpler. Here's how Recipes works from download to dinner.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Download the Free App</h3>
+            <p>Get Recipes free from the App Store. No account, no sign-up, no credit card — just open and start organizing.</p>
+          </div>
         </div>
-      </section>
-
-      <!-- FEATURES -->
-      <section>
-        <h2>❤️ Why you'll love it</h2>
-
-        <div class="grid">
-          <article>
-            <h3>📚 Organize Recipes</h3>
-            <p>Store all your recipes in one clean, searchable library.</p>
-          </article>
-
-          <article>
-            <h3>🛒 Smart Ingredients</h3>
-            <p>Automatically manage ingredients and shopping lists.</p>
-          </article>
-
-          <article>
-            <h3>🍳 Cooking Mode</h3>
-            <p>Step-by-step cooking view designed for hands-free use.</p>
-          </article>
-
-          <article>
-            <h3>☁️ Sync Anywhere</h3>
-            <p>Access your recipes across all your devices.</p>
-          </article>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Import or Add Your Recipes</h3>
+            <p>Paste any recipe URL and the importer does the rest. Or add your own family recipes manually in seconds.</p>
+          </div>
         </div>
-      </section>
-
-      <!-- SCREENSHOTS -->
-      <section>
-        <h2>📷 Screenshots</h2>
-
-        <div class="grid">
-          <img style="border-radius: 40px;" src="/assets/a.png" alt="Screenshot 1">
-          <img style="border-radius: 40px;" src="/assets/b.png" alt="Screenshot 2">
-          <img style="border-radius: 40px;" src="/assets/c.png" alt="Screenshot 3">
-          <img style="border-radius: 40px;" src="/assets/d.png" alt="Screenshot 4">
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Organize Into Folders</h3>
+            <p>Create custom folders that match the way you cook. Keep weeknight dinners, baking projects, and holiday meals neatly separated.</p>
+          </div>
         </div>
-      </section>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div>
+            <h3>Shop & Cook Smarter</h3>
+            <p>Build a categorized grocery list from your recipes with one tap, then cook from clean, focused recipe pages — no ads, no distractions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <!-- SOCIAL PROOF -->
-      <section>
-        <h2>📖 Loved by home cooks</h2>
-        <blockquote>
-          “Finally a simple recipe app that actually feels like Apple built it.”
-        </blockquote>
-        <blockquote>
-          “I replaced my notes, Pinterest saves, and cookbooks with this app.”
-        </blockquote>
-      </section>
+    <!-- ── SCREENSHOTS ── -->
+    <section aria-labelledby="screenshots-title">
+      <p class="section-label">App Screenshots</p>
+      <h2 class="section-title" id="screenshots-title">Beautifully Designed for the Way You Cook</h2>
+      <p class="section-body">A clean, modern interface built specifically for iPhone and iPad — designed to get out of your way when you're in the kitchen.</p>
 
-      <!-- TAGS -->
-      <section>
-        <h2>✅ Perfect for</h2>
-        <span class="badge">Meal Prep</span>
-        <span class="badge">Home Cooking</span>
-        <span class="badge">Recipe Storage</span>
-        <span class="badge">Shopping Lists</span>
-        <span class="badge">Food Lovers</span>
-      </section>
+      <div class="screenshots-grid">
+        <img src="/assets/a.png" alt="Recipe list screen in Recipes showing organized folders on iPhone" loading="lazy">
+        <img src="/assets/b.png" alt="Recipe detail view showing ingredients and step-by-step cooking instructions" loading="lazy">
+        <img src="/assets/c.png" alt="Smart grocery shopping list automatically generated from saved recipes" loading="lazy">
+        <img src="/assets/d.png" alt="Cooking mode with step-by-step instructions and distraction-free screen" loading="lazy">
+      </div>
+    </section>
 
-      <!-- FOOTER -->
-      <footer>
-        <p>Built for people who love cooking 🍝</p>
-        <p><small>© 2026 Recipes App</small></p>
-      </footer>
-    </main>
-  </body>
+    <!-- ── COMPARISON ── -->
+    <section aria-labelledby="comparison-title">
+      <p class="section-label">Why Recipes</p>
+      <h2 class="section-title" id="comparison-title">How We Compare to the Alternatives</h2>
+      <p class="section-body">Most people try to organize recipes with tools that weren't built for the job. Here's why a dedicated recipe app makes all the difference.</p>
+
+      <div class="comparison-wrap" role="region" aria-label="Feature comparison table">
+        <table>
+          <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="highlight-col">Recipes</th>
+            <th>Browser Bookmarks</th>
+            <th>Notes App</th>
+            <th>Pinterest</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Organized custom folders</td>
+            <td class="highlight-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Import recipes from websites</td>
+            <td class="highlight-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>Works offline</td>
+            <td class="highlight-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>Smart grocery list</td>
+            <td class="highlight-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>iCloud sync across devices</td>
+            <td class="highlight-col check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Ad-free recipe viewing</td>
+            <td class="highlight-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>Zero data collected</td>
+            <td class="highlight-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+            <td class="cross">✗</td>
+          </tr>
+          <tr>
+            <td>Built for iPhone &amp; iPad</td>
+            <td class="highlight-col check">✓</td>
+            <td class="cross">✗</td>
+            <td class="check">✓</td>
+            <td class="cross">✗</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section aria-labelledby="reviews-title">
+      <p class="section-label">User Reviews</p>
+      <h2 class="section-title" id="reviews-title">What Home Cooks Are Saying</h2>
+
+      <div class="quotes-grid">
+        <div class="quote-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>Finally a simple recipe organizer that feels native to iOS. I've tried at least five other apps and this one just works. Clean design, fast, and no account needed.</blockquote>
+          <p class="quote-author">— App Store Review</p>
+        </div>
+        <div class="quote-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>I replaced Notes, Pinterest, and about 40 random bookmarks with this app. Everything is organized the way I think, and importing from websites is genuinely instant.</blockquote>
+          <p class="quote-author">— App Store Review</p>
+        </div>
+        <div class="quote-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>The grocery list feature alone makes this worth it. I plan my meals for the week, add ingredients from each recipe, and show up at the store with a perfectly organized list every time.</blockquote>
+          <p class="quote-author">— App Store Review</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section aria-labelledby="faq-title">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title" id="faq-title">Frequently Asked Questions</h2>
+      <p class="section-body">Everything you need to know about Recipes before you download.</p>
+
+      <div class="faq-list">
+        <details>
+          <summary>Is Recipes free to download?</summary>
+          <div class="faq-answer">Yes, Recipes is completely free to download on the App Store for iPhone and iPad. Optional in-app purchases are available at $0.99/month or $9.99/year for anyone who wants to support ongoing development and unlock additional features.</div>
+        </details>
+        <details>
+          <summary>Can I import recipes from any website?</summary>
+          <div class="faq-answer">Yes. The built-in recipe importer works with thousands of popular cooking websites including AllRecipes, Food Network, NYT Cooking, Serious Eats, Bon Appétit, and many more. Just paste the URL into the app and it automatically extracts the title, ingredients, and steps — no manual entry required.</div>
+        </details>
+        <details>
+          <summary>Does the app sync across my iPhone, iPad, and Mac?</summary>
+          <div class="faq-answer">Yes. Recipes uses iCloud to keep your recipe collection perfectly in sync across all your Apple devices. Any recipe you save on your iPhone appears instantly on your iPad and Mac, and vice versa — with no setup required beyond signing into iCloud.</div>
+        </details>
+        <details>
+          <summary>Do I need to create an account?</summary>
+          <div class="faq-answer">No account is required. Recipes uses your existing iCloud account for sync and storage, which means there's nothing to sign up for and no password to remember. Just download and start cooking.</div>
+        </details>
+        <details>
+          <summary>Does Recipes collect my personal data?</summary>
+          <div class="faq-answer">No. The developer collects absolutely zero data from users. Your recipes are stored privately in your own iCloud account and are never shared with third parties, advertisers, or anyone else. Recipes is one of the most privacy-friendly cooking apps on the App Store.</div>
+        </details>
+        <details>
+          <summary>Can I use Recipes to build a grocery list?</summary>
+          <div class="faq-answer">Yes — and it's one of the best features. From any saved recipe, you can add all ingredients directly to your grocery list with a single tap. The app consolidates ingredients from multiple recipes and organizes them by category, so shopping is faster and you never forget anything.</div>
+        </details>
+        <details>
+          <summary>What iPhone and iPad models are supported?</summary>
+          <div class="faq-answer">Recipes requires iOS 16 or later on iPhone and iPadOS 16 or later on iPad. It also runs on Mac via Apple Silicon (M1 chip or later). It is optimized for both iPhone and iPad with a multi-column layout for larger screens.</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ── SEO LONG-FORM CONTENT ── -->
+    <section aria-labelledby="about-title">
+      <p class="section-label">About</p>
+      <h2 class="section-title" id="about-title">The Best Way to Manage Recipes on iPhone</h2>
+
+      <div class="seo-content">
+        <h3>What Is Recipes?</h3>
+        <p>Recipes is a free recipe organizer and digital cookbook designed specifically for iPhone and iPad. It lets you save recipes from any website on the internet, organize them into custom folders, and cook from a clean, distraction-free interface — all synced automatically across your Apple devices via iCloud. Whether you're looking for the best recipe keeper app for iPhone, a simple way to organize your family's favorite dishes, or a smarter approach to grocery shopping, Recipes was built for exactly that purpose.</p>
+
+        <h3>Why Home Cooks Prefer a Dedicated Recipe App Over Bookmarks or Notes</h3>
+        <p>Most people start organizing recipes with whatever's handy — a folder of browser bookmarks, screenshots saved to their camera roll, or a running list in the Notes app. These approaches work at first, but they break down quickly. Websites go offline. Screenshots pile up with no way to search them. Your Notes app becomes an unsearchable wall of text. A dedicated iPhone recipe app solves all of these problems at once by giving every recipe a permanent, structured, searchable home on your device.</p>
+        <ul>
+          <li><strong>Saved permanently:</strong> Even if the original website disappears, your imported recipe stays safe in the app.</li>
+          <li><strong>Works offline:</strong> Access any saved recipe without an internet connection — perfect for cooking in the kitchen.</li>
+          <li><strong>Fully searchable:</strong> Find any recipe by title, ingredient, or cuisine in seconds.</li>
+          <li><strong>Ad-free:</strong> No pop-ups, no auto-playing videos, no distractions — just the recipe.</li>
+        </ul>
+
+        <h3>How to Organize Your Recipe Collection on iPhone</h3>
+        <p>The most effective recipe organization system is one that mirrors how you actually think about food. Recipes lets you create unlimited custom folders, so you can structure your cookbook exactly the way you want. Common approaches include organizing by meal type (Breakfast, Lunch, Dinner, Snacks), by occasion (Weeknight Dinners, Meal Prep, Holiday Baking), by cuisine (Italian, Mexican, Asian), or by cooking method (Instant Pot, Air Fryer, Grilling). You can also maintain a "Want to Try" folder for recipes you've saved but haven't cooked yet, and a "House Favorites" folder for the dishes your household requests most often.</p>
+
+        <h3>Importing Recipes from the Web to Your iPhone</h3>
+        <p>One of Recipes's most powerful features is its recipe importer, which works with thousands of popular food and cooking websites. Instead of bookmarking a page and hoping it's still there when you need it, the importer extracts the recipe content and saves it directly to your collection in a clean, standardized format. This means no more ads, no more scrolling past lengthy blog introductions, and no more lost recipes when websites go dark. The importer works with sites like AllRecipes, Food Network, Serious Eats, NYT Cooking, Bon Appétit, The Kitchn, and thousands more.</p>
+
+        <h3>Building Smarter Grocery Lists from Your Recipes</h3>
+        <p>Recipes bridges the gap between meal planning and grocery shopping in a way that standalone shopping list apps can't. Because your recipes and your grocery list live in the same app, you can add all the ingredients from a recipe to your shopping list with a single tap. Plan your meals for the week, add ingredients from each dish, and the app consolidates everything into a single categorized list — grouping produce, proteins, dairy, pantry staples, and other departments together so you move through the store efficiently without retracing your steps.</p>
+
+        <h3>Privacy and Security: Your Recipes Are Yours</h3>
+        <p>Unlike many recipe apps that require creating an account and storing your data on third-party servers, Recipes uses iCloud — Apple's secure cloud platform — for all storage and sync. This means your recipes are stored in your own iCloud account, governed by Apple's world-class privacy policies. The developer collects zero data from users, which means no analytics on what recipes you save, no behavioral tracking, and no data sold to advertisers. For privacy-conscious iPhone users, Recipes is the clear choice among recipe organizers on the App Store.</p>
+      </div>
+    </section>
+
+    <!-- ── TAGS ── -->
+    <section aria-label="Related topics">
+      <p class="section-label">Related Topics</p>
+      <div class="tags">
+        <span class="tag">Recipe Organizer App</span>
+        <span class="tag">Cookbook App for iPhone</span>
+        <span class="tag">Meal Planning App iOS</span>
+        <span class="tag">Grocery List App iPhone</span>
+        <span class="tag">Import Recipes from Web</span>
+        <span class="tag">Digital Cookbook iPhone</span>
+        <span class="tag">Recipe Keeper iPad</span>
+        <span class="tag">iCloud Recipe Sync</span>
+        <span class="tag">Free Cooking App iPhone</span>
+        <span class="tag">Best Recipe App 2026</span>
+        <span class="tag">Save Recipes from Websites</span>
+        <span class="tag">Home Cook iPhone App</span>
+      </div>
+    </section>
+
+    <!-- ── FINAL CTA ── -->
+    <div class="cta-section" aria-label="Download call to action">
+      <h2>Start Cooking Smarter Today</h2>
+      <p>Join thousands of home cooks who've replaced their messy bookmarks and screenshots with one beautifully organized digital cookbook.</p>
+      <a href="https://apps.apple.com/bf/app/recipes-recipe-keeper/id1510068935" target="_blank" rel="noopener" aria-label="Download Recipes free on the App Store">
+        <img src="/assets/download.svg" alt="Download Recipes on the App Store" height="54">
+      </a>
+    </div>
+
+  </div><!-- /container -->
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <ul class="footer-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="https://apps.apple.com/bf/app/recipes-recipe-keeper/id1510068935" target="_blank" rel="noopener">Download on App Store</a></li>
+      <li><a href="https://sites.google.com/view/therecipesapp/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+      <li><a href="https://sites.google.com/view/therecipesapp/terms-of-service" target="_blank" rel="noopener">Terms of Service</a></li>
+    </ul>
+    <p>Built for home cooks who want a simpler kitchen 🍝</p>
+    <p><small>© 2026 Recipes. All rights reserved.</small></p>
+  </div>
+</footer>
+
+</body>
 </html>
